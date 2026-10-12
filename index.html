@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="header">
+        <a href="#" class="logo" id="homeLink">Shop<span></span></a>
+
+        <div class="search-box">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search for a product..."
+                aria-label="Search products"
+            >
+            <button id="searchBtn" type="button">Search</button>
+        </div>
+
+        <button class="cart-button" id="cartBtn" type="button">
+            🛒 Korzinka
+            <span id="cartCount">0</span>
+        </button>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p class="eyebrow">WELCOME TO Online Shopping</p>
+            <h1>Hamma kerakli buyum sotib oling <span>Faqat shu yerda</span></h1>
+            <p>O'zingizga tovar ko'ring.</p>
+            <button class="primary-button" id="shopNowBtn" type="button">
+                Shop now →
+            </button>
+        </section>
+
+        <section class="catalog" id="catalog">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">OUR COLLECTION</p>
+                    <h2>Tovarlarni ko'rib chiqish</h2>
+                </div>
+                <p id="resultCount">3 products</p>
+            </div>
+
+            <nav class="categories" aria-label="Product categories">
+                <button class="category-btn active" data-category="all">
+                    Hamma tovarlar
+                </button>
+                <button class="category-btn" data-category="phone">
+                    Telefonlar
+                </button>
+                <button class="category-btn" data-category="laptop">
+                    Noutbuk
+                </button>
+                <button class="category-btn" data-category="tablet">
+                    Ipad
+                </button>
+            </nav>
+
+            <div class="products" id="products">
+
+                <article class="product-card"
+                    data-id="phone-1"
+                    data-name="Samsung Galaxy"
+                    data-category="phone"
+                    data-price="4500000">
+
+                    <div class="product-image">
+                        <span class="discount">-20%</span>
+                        <img src="Telefon.jpg" alt="Samsung Galaxy phone">
+                    </div>
+
+                    <div class="product-info">
+                        <p class="product-category">Telefon</p>
+                        <h3>Samsung Galaxy</h3>
+                        <p class="price">4 500 000 so'm</p>
+                        <button class="add-button" data-add="phone-1">
+                            + Add to cart
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card"
+                    data-id="laptop-1"
+                    data-name="Laptop"
+                    data-category="laptop"
+                    data-price="8500000">
+
+                    <div class="product-image">
+                        <img src="Noutbuk.webp" alt="Laptop computer">
+                    </div>
+
+                    <div class="product-info">
+                        <p class="product-category">Noutbuk</p>
+                        <h3>Noutbuk</h3>
+                        <p class="price">8 500 000 so'm</p>
+                        <button class="add-button" data-add="laptop-1">
+                            + Add to cart
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card"
+                    data-id="tablet-1"
+                    data-name="iPad"
+                    data-category="tablet"
+                    data-price="6000000">
+
+                    <div class="product-image">
+                        <img src="Ipad.jpg" alt="iPad tablet">
+                    </div>
+
+                    <div class="product-info">
+                        <p class="product-category">Ipad</p>
+                        <h3>iPad</h3>
+                        <p class="price">6 000 000 so'm</p>
+                        <button class="add-button" data-add="tablet-1">
+                            + Add to cart
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+
+            <p class="empty-message" id="emptyProducts" hidden>
+                Error, hech qanday tovar topilmadi
+            </p>
+        </section>
+
+        <section class="cart-section" id="cartSection" hidden>
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Saqlangan tovarlar</p>
+                    <h2>Sizning korzinkangiz</h2>
+                </div>
+                <button class="secondary-button" id="continueShoppingBtn">
+                    ← Davom etish
+                </button>
+            </div>
+
+            <div id="cartItems"></div>
+
+            <div class="cart-summary" id="cartSummary">
+                <p>Umumiy narx: <strong id="cartTotal">0 so'm</strong></p>
+                <button class="primary-button" id="checkoutBtn">
+                    Tovar sotib olish →
+                </button>
+            </div>
+
+            <p id="emptyCart" class="empty-message" hidden>
+                Sizning korzinkangiz bo'sh!
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <a href="#" class="logo">Shopping<span>.</span></a>
+        <p>© 2026 Online Store.</p>
+    </footer>
+
+    <dialog id="checkoutDialog">
+        <div class="dialog-content">
+            <button class="close-dialog" id="closeDialogBtn"
+                aria-label="Close">✕</button>
+
+            <p class="eyebrow">Shop check</p>
+            <h2>Tasdiqlash</h2>
+            <p id="checkoutDetails"></p>
+
+            <label for="customerName">Ismingiz</label>
+            <input id="customerName" type="text"
+                placeholder="Enter your name" required>
+
+            <label for="customerPhone">Telefon nomer</label>
+            <input id="customerPhone" type="tel"
+                placeholder="Enter your phone number" required>
+
+            <button class="primary-button full-button" id="confirmOrderBtn">
+                zakazni tasdiqlash
+            </button>
+
+            <p class="checkout-note">
+                Demo checkout only. No real payment will be taken.
+            </p>
+        </div>
+    </dialog>
+
+    <dialog id="successDialog">
+        <div class="dialog-content success-content">
+            <div class="success-icon">✓</div>
+            <h2>Order received!</h2>
+            <p id="successMessage"></p>
+            <button class="primary-button full-button" id="finishBtn">
+                Continue shopping
+            </button>
+        </div>
+    </dialog>
+
+</body>
+</html>
